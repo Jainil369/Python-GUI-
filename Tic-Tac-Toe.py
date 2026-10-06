@@ -7,7 +7,36 @@ turn = "X"
 
 def winning():
     if b1.cget("text") == b2.cget("text") == b3.cget("text") != "":
-        print("you won")
+        answer.configure(text = b1.cget("text") + " won")
+    if b1.cget("text") == b5.cget("text") == b9.cget("text") != "":
+        answer.configure(text = b1.cget("text") + " won")
+    if b1.cget("text") == b4.cget("text") == b7.cget("text") != "":
+        answer.configure(text = b1.cget("text") + " won")
+    if b4.cget("text") == b5.cget("text") == b6.cget("text") != "":
+        answer.configure(text = b4.cget("text") + " won")
+    if b7.cget("text") == b8.cget("text") == b9.cget("text") != "":
+        answer.configure(text = b7.cget("text") + " won")
+    if b3.cget("text") == b5.cget("text") == b7.cget("text") != "":
+        answer.configure(text = b3.cget("text") + " won")
+    if b2.cget("text") == b5.cget("text") == b8.cget("text") != "":
+        answer.configure(text = b2.cget("text") + " won")
+    if b3.cget("text") == b6.cget("text") == b9.cget("text") != "":
+        answer.configure(text = b3.cget("text") + " won")
+
+def reset_button():
+    global turn
+    b1.configure(text = "")
+    b2.configure(text = "")
+    b3.configure(text = "")
+    b4.configure(text = "")
+    b5.configure(text = "")
+    b6.configure(text = "")
+    b7.configure(text = "")
+    b8.configure(text = "")
+    b9.configure(text = "")
+    turn = "X"
+    answer.configure(text = "")
+
 
 def b1_choice():
     global turn
@@ -18,6 +47,7 @@ def b1_choice():
         elif turn == "O":
             b1.configure(text = "O") 
             turn = "X"
+    winning()
 
 def b2_choice():
     global turn
@@ -28,6 +58,8 @@ def b2_choice():
         elif turn == "O":
             b2.configure(text = "O") 
             turn = "X"
+    winning()
+
 
 def b3_choice():
     global turn
@@ -49,6 +81,7 @@ def b4_choice():
         elif turn == "O":
             b4.configure(text = "O") 
             turn = "X"
+    winning()
 
 def b5_choice():
     global turn
@@ -59,6 +92,7 @@ def b5_choice():
         elif turn == "O":
             b5.configure(text = "O") 
             turn = "X"
+    winning()
 
 def b6_choice():
     global turn
@@ -69,6 +103,7 @@ def b6_choice():
         elif turn == "O":
             b6.configure(text = "O") 
             turn = "X"
+    winning()
 
 def b7_choice():
     global turn
@@ -79,6 +114,7 @@ def b7_choice():
         elif turn == "O":
             b7.configure(text = "O") 
             turn = "X"
+    winning()
 
 def b8_choice():
     global turn
@@ -89,6 +125,7 @@ def b8_choice():
         elif turn == "O":
             b8.configure(text = "O") 
             turn = "X"
+    winning()
 
 def b9_choice():
     global turn
@@ -99,6 +136,7 @@ def b9_choice():
         elif turn == "O":
             b9.configure(text = "O") 
             turn = "X"
+    winning()
 
 title = Label(window,text = "Tic Tac Toe")
 b1 = Button(frame,width = 10,text = "",command = b1_choice)
@@ -110,6 +148,10 @@ b6 = Button(frame,width = 10,text = "",command = b6_choice)
 b7 = Button(frame,width = 10,text = "",command = b7_choice)
 b8 = Button(frame,width = 10,text = "",command = b8_choice)
 b9 = Button(frame,width = 10,text = "",command = b9_choice)
+answer = Label(window,text = "")
+reset = Button(window,text = "Reset",command = reset_button)
+answer.place(x=200,y=230)
+reset.place(x=200,y=270)
 title.place(x=150,y=15)
 frame.place(x=50,y=100)
 b1.grid(row = 15,column = 3)
